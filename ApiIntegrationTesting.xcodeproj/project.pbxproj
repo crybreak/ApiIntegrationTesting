@@ -14,6 +14,11 @@
 		FA5834972B7CB80B004CEFED /* ApiIntegrationTestingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834962B7CB80B004CEFED /* ApiIntegrationTestingTests.swift */; };
 		FA5834A12B7CB80B004CEFED /* ApiIntegrationTestingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834A02B7CB80B004CEFED /* ApiIntegrationTestingUITests.swift */; };
 		FA5834A32B7CB80B004CEFED /* ApiIntegrationTestingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834A22B7CB80B004CEFED /* ApiIntegrationTestingUITestsLaunchTests.swift */; };
+		FA5834B12B7CBB63004CEFED /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834B02B7CBB63004CEFED /* Album.swift */; };
+		FA5834B32B7CBB6C004CEFED /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834B22B7CBB6C004CEFED /* Photo.swift */; };
+		FA5834B62B7CBD17004CEFED /* AlbumListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834B52B7CBD17004CEFED /* AlbumListViews.swift */; };
+		FA5834BB2B7CBEC7004CEFED /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834BA2B7CBEC7004CEFED /* AlbumViewModel.swift */; };
+		FA5834BD2B7CBEE1004CEFED /* APIRessources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834BC2B7CBEE1004CEFED /* APIRessources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		FA58349C2B7CB80B004CEFED /* ApiIntegrationTestingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApiIntegrationTestingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5834A02B7CB80B004CEFED /* ApiIntegrationTestingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiIntegrationTestingUITests.swift; sourceTree = "<group>"; };
 		FA5834A22B7CB80B004CEFED /* ApiIntegrationTestingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiIntegrationTestingUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA5834B02B7CBB63004CEFED /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		FA5834B22B7CBB6C004CEFED /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		FA5834B52B7CBD17004CEFED /* AlbumListViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViews.swift; sourceTree = "<group>"; };
+		FA5834BA2B7CBEC7004CEFED /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		FA5834BC2B7CBEE1004CEFED /* APIRessources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRessources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,10 @@
 		FA5834842B7CB808004CEFED /* ApiIntegrationTesting */ = {
 			isa = PBXGroup;
 			children = (
+				FA5834B82B7CBE47004CEFED /* View */,
+				FA5834AF2B7CBB52004CEFED /* Model */,
+				FA5834B72B7CBE23004CEFED /* View Model */,
+				FA5834B92B7CBE7B004CEFED /* Api Helpers */,
 				FA5834852B7CB808004CEFED /* ApiIntegrationTestingApp.swift */,
 				FA5834872B7CB808004CEFED /* ContentView.swift */,
 				FA5834892B7CB80A004CEFED /* Assets.xcassets */,
@@ -125,6 +139,47 @@
 				FA5834A22B7CB80B004CEFED /* ApiIntegrationTestingUITestsLaunchTests.swift */,
 			);
 			path = ApiIntegrationTestingUITests;
+			sourceTree = "<group>";
+		};
+		FA5834AF2B7CBB52004CEFED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA5834B02B7CBB63004CEFED /* Album.swift */,
+				FA5834B22B7CBB6C004CEFED /* Photo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA5834B42B7CBCFA004CEFED /* album photo view */ = {
+			isa = PBXGroup;
+			children = (
+				FA5834B52B7CBD17004CEFED /* AlbumListViews.swift */,
+			);
+			path = "album photo view";
+			sourceTree = "<group>";
+		};
+		FA5834B72B7CBE23004CEFED /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA5834BA2B7CBEC7004CEFED /* AlbumViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		FA5834B82B7CBE47004CEFED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA5834B42B7CBCFA004CEFED /* album photo view */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA5834B92B7CBE7B004CEFED /* Api Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA5834BC2B7CBEE1004CEFED /* APIRessources.swift */,
+			);
+			path = "Api Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +312,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5834BB2B7CBEC7004CEFED /* AlbumViewModel.swift in Sources */,
+				FA5834B32B7CBB6C004CEFED /* Photo.swift in Sources */,
 				FA5834882B7CB808004CEFED /* ContentView.swift in Sources */,
+				FA5834BD2B7CBEE1004CEFED /* APIRessources.swift in Sources */,
+				FA5834B62B7CBD17004CEFED /* AlbumListViews.swift in Sources */,
 				FA5834862B7CB808004CEFED /* ApiIntegrationTestingApp.swift in Sources */,
+				FA5834B12B7CBB63004CEFED /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
