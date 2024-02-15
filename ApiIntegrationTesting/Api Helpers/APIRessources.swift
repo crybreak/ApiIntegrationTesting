@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Combine
 
-struct APIRessources {
+struct APIRessources: APIRessourcesProtocol {
     enum EndPoint: String {
         case post, users, comments, albums, photos, todos
     }
@@ -31,12 +32,52 @@ struct APIRessources {
         }
     }
     
+    
     static func urlWithQuery(for endpoint: EndPoint, searchKey: SearchKey, searchId: Int) -> URL?  {
         var componts = urlComponenents
         componts.path = "/" + endpoint.rawValue
         componts.setQueryItems(with: [searchKey.rawValue : String(searchId)])
         
         return componts.url
+    }
+    
+    private func fetchUrl(url: URL) -> AnyPublisher<Data, Error> {
+        return URLSession.shared.dataTaskPublisher(for: url)
+           .tryMap({ (data, response) in
+               if  let respone = response as? HTTPURLResponse,
+                   !(200...299).contains(respone.statusCode) {
+                   throw APIError.badResponse(statusCode: respone.statusCode)
+               } else {
+                   return data
+               }
+           }).eraseToAnyPublisher()
+    }
+    
+    func createAlbumsPublisher() -> AnyPublisher<[Album], APIError> {
+        if let url = APIRessources.url(with: .albums) {
+           
+            return fetchUrl(url: url)
+                 .decode(type: [Album].self, decoder: JSONDecoder())
+                 .mapError({ APIError.convert(error: $0)})
+                 .eraseToAnyPublisher()
+        } else {
+            return Fail(error: APIError.badURL)
+                .eraseToAnyPublisher()
+        }
+    }
+    
+    func fetchPhotosWithQuery(searchKey: SearchKey , searchId: Int) -> AnyPublisher<[Photo], APIError> {
+        if let url = APIRessources.urlWithQuery(for: .photos, searchKey: .albumId, searchId: searchId) {
+            return fetchUrl(url: url)
+                .decode(type: [Photo].self, decoder: JSONDecoder())
+                .mapError {APIError.convert(error: $0)}
+                .eraseToAnyPublisher()
+        } else {
+           return Fail(error: APIError.badURL)
+                .eraseToAnyPublisher()
+        }
+        
+        
     }
 }
 
