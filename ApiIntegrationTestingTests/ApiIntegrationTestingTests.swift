@@ -6,31 +6,74 @@
 //
 
 import XCTest
+import Combine
+
 @testable import ApiIntegrationTesting
 
 final class ApiIntegrationTestingTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    var subscriptions = Set<AnyCancellable>()
+    
+    override  func tearDown() {
+        subscriptions = []
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testInialAlbumsFetch() {
+        let fetcher = AlbumViewModel(ressource: APIRessourcesMock())
+        let promise = expectation(description: "loading albums in init")
+        fetcher.$albums.sink { (albums) in
+            if albums.count == 1 {
+                promise.fulfill()
+            }
+        }.store(in: &subscriptions)
+        
+        wait(for: [promise], timeout: 1)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testErrorMessage() {
+        let error = APIError.badResponse(statusCode: 404)
+        let mock = APIRessourcesMock(result: .failure(error))
+        let fetcher = AlbumViewModel(ressource: mock)
+        let promise = expectation(description: "url fetch return error message")
+        
+        fetcher.$albums
+        //            .filter({$0.count > 0})
+            .sink { alubms in
+                XCTFail("should not have album")
+            }.store(in: &subscriptions)
+        
+        fetcher.$errorMessage
+            .filter({!$0.isEmpty})
+            .sink { message in
+                if error.localizedDescription == message {
+                    promise.fulfill()
+                }
+            }.store(in: &subscriptions)
+        
+        wait(for: [promise], timeout: 1)
     }
+    
+    func test_Fetching_Photos_For_Selected() {
+        let fetcher = AlbumViewModel(ressource: APIRessourcesMock())
+        let promise = expectation(description: " fetch 1 photo for select album")
+        
+                
+        XCTAssert(fetcher.photoSelectedAlbum.count == 0, "at the begining we don't have")
+        
+        
+        fetcher.selectedAlbum = Album(id: 1, userId: 1, title: "title")
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        fetcher.$photoSelectedAlbum
+            .filter({photos in
+                return !photos.isEmpty
+            })
+            .sink { _ in
+                promise.fulfill()
+            }.store(in: &subscriptions)
+        wait(for: [promise], timeout: 1)
+
     }
-
 }
+
+
+
