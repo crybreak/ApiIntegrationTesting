@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 struct APIRessources: APIRessourcesProtocol {
     enum EndPoint: String {
@@ -76,8 +77,25 @@ struct APIRessources: APIRessourcesProtocol {
            return Fail(error: APIError.badURL)
                 .eraseToAnyPublisher()
         }
-        
-        
+    }
+    
+    func fetechImage(for photo: Photo) -> AnyPublisher<Photo, Never> {
+        if let url = URL(string: photo.thumbnailImagePath) {
+            return URLSession.shared.dataTaskPublisher(for: url)
+                    .compactMap{ ( data, response) in
+                         UIImage(data: data)
+                    }
+                    .map { image -> Photo in
+                        var photo = photo
+                        photo.thumbnailUIImage = image
+                        return photo
+                    }
+                    .replaceError(with: photo)
+                    .eraseToAnyPublisher()
+        } else {
+            return Just(photo)
+                .eraseToAnyPublisher()
+        }
     }
 }
 

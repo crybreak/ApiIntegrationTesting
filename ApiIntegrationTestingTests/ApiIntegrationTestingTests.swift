@@ -71,6 +71,40 @@ final class ApiIntegrationTestingTests: XCTestCase {
                 promise.fulfill()
             }.store(in: &subscriptions)
         wait(for: [promise], timeout: 1)
+    }
+    
+    func test_update_thumbail_Image() {
+        let viewModel = AlbumViewModel(ressource: APIRessourcesMock())
+        
+        let initialPhoto = Photo(id: 1, albumId: 1, title: "", largeImagePath: "", thumbnailImagePath: "")
+        viewModel.photoSelectedAlbum = [initialPhoto]
+        
+        let promise = expectation(description: " fetching image from photo")
+        let promise2 = expectation(description: " photo with loading state")
+
+
+        viewModel.fetchThumbnail.send(initialPhoto)
+        
+        viewModel.$photoSelectedAlbum
+            .contains(where: { photo -> Bool in
+                if let storedPhoto = photo.first(where: {$0.id == initialPhoto.id}),
+                   storedPhoto.thumbnailUIImage == nil && storedPhoto.isLoading {
+                    return true
+                } else {return false}
+            }).sink { photo in
+                promise2.fulfill()
+            }.store(in: &subscriptions  )
+        
+        viewModel.$photoSelectedAlbum
+            .contains(where: { photo -> Bool in
+                if let storedPhoto = photo.first(where: {$0.id == initialPhoto.id}), storedPhoto.thumbnailUIImage != nil {
+                    return true
+                } else {return false}
+            }).sink { photo in
+                promise.fulfill()
+            }.store(in: &subscriptions )
+        
+        wait(for: [promise, promise2], timeout: 1)
 
     }
 }

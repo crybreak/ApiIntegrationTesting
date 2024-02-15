@@ -12,7 +12,27 @@ struct PhotoForAlbumView: View {
 
     var body: some View {
         List(fetcher.photoSelectedAlbum) {photo in
-            Text(photo.title)
+            HStack {
+                if let photoImage = photo.thumbnailUIImage {
+                    Image(uiImage: photoImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100, alignment: .center)
+                } else {
+                    ZStack {
+                        Color.gray.opacity(0.2)
+                            .frame(width: 100, height: 100, alignment: .center)
+                        if photo.isLoading {
+                            ProgressView()
+                        }
+                    }
+                       
+                } 
+                Text(photo.title)
+            }
+                .onAppear {
+                    fetcher.fetchThumbnail.send(photo)
+                }
         }.navigationTitle(fetcher.selectedAlbum?.title ?? "")
     }
 }

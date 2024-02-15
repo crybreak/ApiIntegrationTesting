@@ -62,31 +62,22 @@ class AlbumViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$photoSelectedAlbum)
         
+        fetchThumbnail.sink { [unowned self] photo in
+            if let index = self.photoSelectedAlbum.firstIndex(where: {$0.id == photo.id}) {
+                self.photoSelectedAlbum[index].isLoading = true
+            }
+        }.store(in: &subscriptions)
+        
         fetchThumbnail
-            .flatMap { photo -> AnyPublisher<Photo, Never> in
-                if let url = URL(string: photo.thumbnailImagePath) {
-                    URLSession.shared.dataTaskPublisher(for: url)
-                        .compactMap{ ( data, response) in
-                             UIImage(data: data)
-                        }
-                        .map { image -> Photo in
-                            var photo = photo
-                            photo.thumbnailUIImage = image
-                            return photo
-                        }
-                        .replaceError(with: photo)
-                        .eraseToAnyPublisher()
-                } else {
-                    Just(photo)
-                        .eraseToAnyPublisher()
-                }
-            }
+            .flatMap({ [unowned self] (photo) -> AnyPublisher<Photo, Never>  in
+                apiRessource.fetechImage(for: photo)
+            })
             .receive(on: DispatchQueue.main)
-            .sink { [unowned self] in
-                <#code#>
-            } receiveValue: { <#Publishers.ReceiveOn<Publishers.FlatMap<AnyPublisher<Photo, Never>, PassthroughSubject<Photo, Never>>, DispatchQueue>.Output#> in
-                <#code#>
-            }
+            .sink { [unowned self] photo in
+                if let index = self.photoSelectedAlbum.firstIndex(where: {$0.id == photo.id}) {
+                    self.photoSelectedAlbum[index] = photo
+                }
+            }.store(in: &subscriptions)
 
         
     }
