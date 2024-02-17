@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ApiIntegrationTestingApp: App {
+    @StateObject var imageCaches = ImageCashes()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(imageCaches)
         }
     }
 }

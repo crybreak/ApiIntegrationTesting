@@ -19,6 +19,17 @@
 		FA5834B62B7CBD17004CEFED /* AlbumListViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834B52B7CBD17004CEFED /* AlbumListViews.swift */; };
 		FA5834BB2B7CBEC7004CEFED /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834BA2B7CBEC7004CEFED /* AlbumViewModel.swift */; };
 		FA5834BD2B7CBEE1004CEFED /* APIRessources.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834BC2B7CBEE1004CEFED /* APIRessources.swift */; };
+		FA5834BF2B7CCBC4004CEFED /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834BE2B7CCBC4004CEFED /* APIErrors.swift */; };
+		FA5834C12B7CDF28004CEFED /* APIRessourcesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834C02B7CDF28004CEFED /* APIRessourcesProtocol.swift */; };
+		FA5834C32B7CE0D8004CEFED /* APIRessourcesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834C22B7CE0D8004CEFED /* APIRessourcesMock.swift */; };
+		FA5834C62B7D2FE2004CEFED /* PhotoForAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834C52B7D2FE2004CEFED /* PhotoForAlbumView.swift */; };
+		FA5834C82B7E2418004CEFED /* ImgaeCashes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834C72B7E2418004CEFED /* ImgaeCashes.swift */; };
+		FA5834CA2B7E2D14004CEFED /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5834C92B7E2D14004CEFED /* PhotoDetailView.swift */; };
+		FA5834CD2B7E6D98004CEFED /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = FA5834CC2B7E6D98004CEFED /* TimelaneCombine */; };
+		FAFE43CE2B8102C00057BA9F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE43CD2B8102C00057BA9F /* Comment.swift */; };
+		FAFE43D02B8103260057BA9F /* Todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE43CF2B8103260057BA9F /* Todos.swift */; };
+		FAFE43D42B8103880057BA9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE43D32B8103880057BA9F /* User.swift */; };
+		FAFE43D72B8105440057BA9F /* UserViewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE43D62B8105440057BA9F /* UserViewsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +65,16 @@
 		FA5834B52B7CBD17004CEFED /* AlbumListViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViews.swift; sourceTree = "<group>"; };
 		FA5834BA2B7CBEC7004CEFED /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		FA5834BC2B7CBEE1004CEFED /* APIRessources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRessources.swift; sourceTree = "<group>"; };
+		FA5834BE2B7CCBC4004CEFED /* APIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
+		FA5834C02B7CDF28004CEFED /* APIRessourcesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRessourcesProtocol.swift; sourceTree = "<group>"; };
+		FA5834C22B7CE0D8004CEFED /* APIRessourcesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRessourcesMock.swift; sourceTree = "<group>"; };
+		FA5834C52B7D2FE2004CEFED /* PhotoForAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoForAlbumView.swift; sourceTree = "<group>"; };
+		FA5834C72B7E2418004CEFED /* ImgaeCashes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgaeCashes.swift; sourceTree = "<group>"; };
+		FA5834C92B7E2D14004CEFED /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		FAFE43CD2B8102C00057BA9F /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		FAFE43CF2B8103260057BA9F /* Todos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todos.swift; sourceTree = "<group>"; };
+		FAFE43D32B8103880057BA9F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FAFE43D62B8105440057BA9F /* UserViewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5834CD2B7E6D98004CEFED /* TimelaneCombine in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,12 +126,12 @@
 		FA5834842B7CB808004CEFED /* ApiIntegrationTesting */ = {
 			isa = PBXGroup;
 			children = (
+				FA5834872B7CB808004CEFED /* ContentView.swift */,
+				FA5834852B7CB808004CEFED /* ApiIntegrationTestingApp.swift */,
 				FA5834B82B7CBE47004CEFED /* View */,
 				FA5834AF2B7CBB52004CEFED /* Model */,
-				FA5834B72B7CBE23004CEFED /* View Model */,
 				FA5834B92B7CBE7B004CEFED /* Api Helpers */,
-				FA5834852B7CB808004CEFED /* ApiIntegrationTestingApp.swift */,
-				FA5834872B7CB808004CEFED /* ContentView.swift */,
+				FA5834B72B7CBE23004CEFED /* View Model */,
 				FA5834892B7CB80A004CEFED /* Assets.xcassets */,
 				FA58348B2B7CB80A004CEFED /* Preview Content */,
 			);
@@ -127,6 +149,7 @@
 		FA5834952B7CB80B004CEFED /* ApiIntegrationTestingTests */ = {
 			isa = PBXGroup;
 			children = (
+				FA5834C42B7CE1B2004CEFED /* mock ressource */,
 				FA5834962B7CB80B004CEFED /* ApiIntegrationTestingTests.swift */,
 			);
 			path = ApiIntegrationTestingTests;
@@ -146,6 +169,9 @@
 			children = (
 				FA5834B02B7CBB63004CEFED /* Album.swift */,
 				FA5834B22B7CBB6C004CEFED /* Photo.swift */,
+				FAFE43CD2B8102C00057BA9F /* Comment.swift */,
+				FAFE43CF2B8103260057BA9F /* Todos.swift */,
+				FAFE43D32B8103880057BA9F /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				FA5834B52B7CBD17004CEFED /* AlbumListViews.swift */,
+				FA5834C52B7D2FE2004CEFED /* PhotoForAlbumView.swift */,
+				FA5834C92B7E2D14004CEFED /* PhotoDetailView.swift */,
 			);
 			path = "album photo view";
 			sourceTree = "<group>";
@@ -162,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				FA5834BA2B7CBEC7004CEFED /* AlbumViewModel.swift */,
+				FA5834C72B7E2418004CEFED /* ImgaeCashes.swift */,
+				FAFE43D62B8105440057BA9F /* UserViewsModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -169,6 +199,7 @@
 		FA5834B82B7CBE47004CEFED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FAFE43D52B8105260057BA9F /* User Todos View */,
 				FA5834B42B7CBCFA004CEFED /* album photo view */,
 			);
 			path = View;
@@ -178,8 +209,25 @@
 			isa = PBXGroup;
 			children = (
 				FA5834BC2B7CBEE1004CEFED /* APIRessources.swift */,
+				FA5834BE2B7CCBC4004CEFED /* APIErrors.swift */,
+				FA5834C02B7CDF28004CEFED /* APIRessourcesProtocol.swift */,
 			);
 			path = "Api Helpers";
+			sourceTree = "<group>";
+		};
+		FA5834C42B7CE1B2004CEFED /* mock ressource */ = {
+			isa = PBXGroup;
+			children = (
+				FA5834C22B7CE0D8004CEFED /* APIRessourcesMock.swift */,
+			);
+			path = "mock ressource";
+			sourceTree = "<group>";
+		};
+		FAFE43D52B8105260057BA9F /* User Todos View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Todos View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +246,9 @@
 			dependencies = (
 			);
 			name = ApiIntegrationTesting;
+			packageProductDependencies = (
+				FA5834CC2B7E6D98004CEFED /* TimelaneCombine */,
+			);
 			productName = ApiIntegrationTesting;
 			productReference = FA5834822B7CB808004CEFED /* ApiIntegrationTesting.app */;
 			productType = "com.apple.product-type.application";
@@ -270,6 +321,9 @@
 				Base,
 			);
 			mainGroup = FA5834792B7CB808004CEFED;
+			packageReferences = (
+				FA5834CB2B7E6D98004CEFED /* XCRemoteSwiftPackageReference "TimelaneCombine" */,
+			);
 			productRefGroup = FA5834832B7CB808004CEFED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -313,12 +367,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5834BB2B7CBEC7004CEFED /* AlbumViewModel.swift in Sources */,
+				FA5834BF2B7CCBC4004CEFED /* APIErrors.swift in Sources */,
+				FA5834C82B7E2418004CEFED /* ImgaeCashes.swift in Sources */,
+				FAFE43CE2B8102C00057BA9F /* Comment.swift in Sources */,
+				FAFE43D42B8103880057BA9F /* User.swift in Sources */,
+				FA5834C62B7D2FE2004CEFED /* PhotoForAlbumView.swift in Sources */,
 				FA5834B32B7CBB6C004CEFED /* Photo.swift in Sources */,
+				FA5834CA2B7E2D14004CEFED /* PhotoDetailView.swift in Sources */,
 				FA5834882B7CB808004CEFED /* ContentView.swift in Sources */,
+				FAFE43D02B8103260057BA9F /* Todos.swift in Sources */,
 				FA5834BD2B7CBEE1004CEFED /* APIRessources.swift in Sources */,
 				FA5834B62B7CBD17004CEFED /* AlbumListViews.swift in Sources */,
+				FA5834C32B7CE0D8004CEFED /* APIRessourcesMock.swift in Sources */,
 				FA5834862B7CB808004CEFED /* ApiIntegrationTestingApp.swift in Sources */,
+				FAFE43D72B8105440057BA9F /* UserViewsModel.swift in Sources */,
 				FA5834B12B7CBB63004CEFED /* Album.swift in Sources */,
+				FA5834C12B7CDF28004CEFED /* APIRessourcesProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +712,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA5834CB2B7E6D98004CEFED /* XCRemoteSwiftPackageReference "TimelaneCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/TimelaneCombine";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA5834CC2B7E6D98004CEFED /* TimelaneCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5834CB2B7E6D98004CEFED /* XCRemoteSwiftPackageReference "TimelaneCombine" */;
+			productName = TimelaneCombine;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA58347A2B7CB808004CEFED /* Project object */;
 }
