@@ -1,37 +1,35 @@
 
-# Projet d'Intégration API avec Combine et Tests par Injection de Dépendances
+# API Integration Project with Combine and Dependency Injection Tests
+This project aims to demonstrate the integration of an external API into an iOS application using Combine for asynchronous flow management, as well as dependency injection tests to ensure code reliability and maintainability.
 
-Ce projet vise à démontrer l'intégration d'une API externe dans une application iOS en utilisant Combine pour la gestion des flux asynchrones, ainsi que les tests par injection de dépendances pour assurer la fiabilité et la maintenabilité du code.
+Before starting to use this project, make sure you have the following
+```
 
-Prérequis
-
-Avant de commencer à utiliser ce projet, assurez-vous de disposer des éléments suivants :
-
-Xcode 12 ou version ultérieure
-Swift 5 ou version ultérieure
-Une connaissance de base de Combine et des tests par injection de dépendances serait utile, mais n'est pas strictement nécessaire.
+Xcode 12 or later
+Swift 5 or later
+Basic knowledge of Combine and dependency injection tests would be helpful but is not strictly necessary.
 Installation
 
-Clonez ce dépôt dans votre répertoire local.
-Ouvrez le fichier .xcworkspace avec Xcode.
-Configurez les variables d'environnement nécessaires dans le fichier Config.swift. Ces variables incluent l'URL de l'API et éventuellement des clés d'authentification.
-Lancez l'application sur le simulateur ou un appareil iOS pour tester son fonctionnement.
-Utilisation
-
-Ce projet comprend plusieurs fonctionnalités principales :
-
-Intégration API : La classe APIService gère les appels à l'API externe en utilisant Combine pour les requêtes asynchrones. Vous pouvez utiliser cette classe pour effectuer des appels à l'API en passant les paramètres requis et en recevant les données en retour.
-Injection de Dépendances : Les dépendances nécessaires sont injectées dans les classes pertinentes pour favoriser la modularité et faciliter les tests unitaires. Les protocoles sont utilisés pour définir les interfaces, ce qui permet de remplacer facilement les implémentations lors des tests.
-Tests Unitaires : Le dossier Tests comprend des tests unitaires pour valider le comportement des différentes parties de l'application. Les mocks sont utilisés pour simuler le comportement des dépendances et garantir l'isolation des tests.
-Exemple d'Utilisation
-
-Voici un exemple simplifié d'utilisation de l'API dans votre application :
-
-swift
+Clone this repository to your local directory.
+bash
 Copy code
-// Créez une instance de l'APIService avec les dépendances nécessaires
-let apiService = APIService(networkManager: NetworkManager())
+Open the .xcworkspace file with Xcode.
+Configure the necessary environment variables in the Config.swift file. These variables include the API URL and potentially authentication keys.
+Run the application on the simulator or an iOS device to test its functionality.
 ```
+his project includes several main features:
+
+API Integration: The APIService class manages calls to the external API using Combine for asynchronous requests. You can use this class to make API calls by passing the required parameters and receiving data in return.
+
+Dependency Injection: Necessary dependencies are injected into relevant classes to promote modularity and facilitate unit testing. Protocols are used to define interfaces, allowing easy replacement of implementations during testing.
+
+Unit Tests: The Tests folder contains unit tests to validate the behavior of different parts of the application. Mocks are used to simulate dependency behavior and ensure test isolation.
+
+swift code
+ ```
+// Créez une instance de 
+L'APIService avec les dépendances nécessaires
+
   ressource.createAlbumsPublisher()
             .lane("Fetching albums")
             .receive(on: DispatchQueue.main)
