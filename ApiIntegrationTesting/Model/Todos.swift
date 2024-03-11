@@ -12,6 +12,6 @@ struct Todos: Codable, Identifiable {
     let id : Int
     let userId: Int
     let title: String
-    let completed: Bool
+    var completed: Bool
 }
 
