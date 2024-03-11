@@ -12,24 +12,27 @@ struct AlbumListViews: View {
     @StateObject var albumFetch = AlbumViewModel()
     
     var body: some View {
-        VStack {
-                List(albumFetch.albums) { album in
-                    NavigationLink(
-                        destination: PhotoForAlbumView(fetcher: albumFetch),
-                        tag: album,
-                        selection: $albumFetch.selectedAlbum,
-                        label: {
-                            Text(album.title)
-                        })
-                }
-                .overlay(content: {
-                    Text(albumFetch.errorMessage)
-                        .foregroundStyle(Color.red)
-                        .padding()
-                })
-                .navigationTitle("Albums")
+        
+        NavigationView {
+            VStack {
+                    List(albumFetch.albums) { album in
+                        NavigationLink(
+                            destination: PhotoForAlbumView(fetcher: albumFetch),
+                            tag: album,
+                            selection: $albumFetch.selectedAlbum,
+                            label: {
+                                Text(album.title)
+                            })
+                    }
+                    .overlay(content: {
+                        Text(albumFetch.errorMessage)
+                            .foregroundStyle(Color.red)
+                            .padding()
+                    })
+                    .navigationTitle("Albums")
+            }
+            .environmentObject(albumFetch)
         }
-        .environmentObject(albumFetch)
     }
 }
 
