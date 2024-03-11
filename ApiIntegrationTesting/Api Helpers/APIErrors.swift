@@ -15,6 +15,11 @@ public enum APIError: Swift.Error, CustomStringConvertible {
     case badURL
     case unknown(Error)
     
+    case unableToCreate
+    case unableToDelete
+    case unableToUpdate
+    
+    
     public var localizedDescription: String {
         // user feedback
         switch self {
@@ -24,10 +29,11 @@ public enum APIError: Swift.Error, CustomStringConvertible {
             return "Sorry, the communication to our server failed."
         case .parsing:
             return "Sorry, we are unable to handle the response from our server."
-        case .unknown:
+        case .unknown, .badURL:
             return "Sorry, something went wrong."
-        case .badURL :
-            return "couldn't create url from string"
+        case .unableToCreate, .unableToDelete, .unableToUpdate :
+            return "Sorry, something went wrong."
+            
         }
     }
     
@@ -40,10 +46,10 @@ public enum APIError: Swift.Error, CustomStringConvertible {
             return "error bad response with status code: \(status)"
         case .parsing(let error):
             return "parsing error \(String(describing: error))"
-        case .badURL:
-            return "couldn't create url from string"
-        default:
-            return "unknown error"
+        case .badURL, .unknown(_):
+            return "could not create url from string"
+        case .unableToCreate, .unableToDelete, .unableToUpdate:
+            return "unknown error with server communication"
         }
     }
     
