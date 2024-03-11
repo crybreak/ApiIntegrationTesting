@@ -1,8 +1,5 @@
-User
-écrit moi un readme pour mon projet d'integration api en utilisant combine et des test par dependance par injection
 
-ChatGPT
-Projet d'Intégration API avec Combine et Tests par Injection de Dépendances
+# Projet d'Intégration API avec Combine et Tests par Injection de Dépendances
 
 Ce projet vise à démontrer l'intégration d'une API externe dans une application iOS en utilisant Combine pour la gestion des flux asynchrones, ainsi que les tests par injection de dépendances pour assurer la fiabilité et la maintenabilité du code.
 
@@ -34,26 +31,24 @@ swift
 Copy code
 // Créez une instance de l'APIService avec les dépendances nécessaires
 let apiService = APIService(networkManager: NetworkManager())
+```
+  ressource.createAlbumsPublisher()
+            .lane("Fetching albums")
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] completion in
+                switch completion {
+                case.finished: break
+                case.failure(let failure):
+                    self.errorMessage = failure.localizedDescription
+                }
+            } receiveValue: { [unowned self] (albums) in
+                self.albums = albums
+            }.store(in: &subscriptions)
+        
+        //when album selected fetch corresponding
+       
+        $photoSelectedAlbum.sink { photos in
+            print("---change photos \(photos.count) count for album \(photos.first?.albumId ?? -1)")
+        }.store(in: &subscriptions
+```
 
-// Appelez une méthode de l'API en passant les paramètres requis
-apiService.fetchData(for: endpoint) { result in
-    switch result {
-    case .success(let data):
-        // Traitez les données reçues
-    case .failure(let error):
-        // Gérez les erreurs
-    }
-}
-Contribution
-
-Les contributions à ce projet sont les bienvenues ! Si vous souhaitez ajouter des fonctionnalités, corriger des bugs ou améliorer la documentation, n'hésitez pas à soumettre une pull request.
-
-Auteurs
-
-Ce projet a été initialement développé par Votre Nom.
-
-Licence
-
-Ce projet est sous licence MIT. Consultez le fichier LICENSE pour plus de détails.
-
-N'hésitez pas à personnaliser ce README en fonction des détails spécifiques de votre projet.
