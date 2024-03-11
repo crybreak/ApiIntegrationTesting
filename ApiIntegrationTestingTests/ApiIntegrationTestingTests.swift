@@ -105,8 +105,56 @@ final class ApiIntegrationTestingTests: XCTestCase {
             }.store(in: &subscriptions )
         
         wait(for: [promise, promise2], timeout: 1)
-
     }
+    
+    func test_feteching_multiple_thumbnail() {
+        
+        let viewModel = AlbumViewModel(ressource: APIRessourcesMock())
+        let firstPhoto = Photo(id: 1, albumId: 1, title: "", largeImagePath: "", thumbnailImagePath: "")
+        let secondPhoto = Photo(id: 2, albumId: 1, title: "", largeImagePath: "", thumbnailImagePath: "")
+        let thirdPhoto = Photo(id: 3, albumId: 1, title: "", largeImagePath: "", thumbnailImagePath: "")
+
+        let promise = expectation(description: "fetching thumbnails exactly only once")
+        let loadingExpectation = expectation(description: "photos should be first in loading state")
+        viewModel.photoSelectedAlbum = [firstPhoto, secondPhoto, thirdPhoto]
+        
+       
+        viewModel.$photoSelectedAlbum
+            .dropFirst()
+            .output(in: 0...2)
+            .tryContains(where: {(photos) in
+                try photos.allSatisfy { photo in
+                    photo.thumbnailUIImage != nil && photo.isLoading
+                }
+            })
+            
+            .sink { (_) in
+            } receiveValue: { result in
+                loadingExpectation.fulfill()
+            }.store(in: &subscriptions)
+
+        
+        viewModel.$photoSelectedAlbum
+            .dropFirst()
+            .print()
+            .collect(3)
+            .sink { photos in
+                promise.fulfill()
+            }.store(in: &subscriptions)
+        
+        viewModel.fetchThumbnail.send(firstPhoto)
+        viewModel.fetchThumbnail.send(secondPhoto)
+        viewModel.fetchThumbnail.send(thirdPhoto)
+        viewModel.fetchThumbnail.send(firstPhoto)
+        
+        wait(for: [promise, loadingExpectation], timeout: 3)
+        
+    }
+    
+    func test_selecting_and_unselecting_album() {
+        
+    }
+    
 }
 
 
